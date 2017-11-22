@@ -2,6 +2,8 @@
 adjustedcranlogs
 ================
 
+<img src="man/images/adjustedcranimage.png" align="center" />
+
 Overview
 --------
 

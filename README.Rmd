@@ -14,6 +14,8 @@ knitr::opts_chunk$set(
 
 # adjustedcranlogs
 
+<img src="man/images/adjustedcranimage.png" align="center" />
+
 ## Overview
 
 **adjustedcranlogs** is a wrapper around the **cranlogs** package that removes CRAN-wide shared daily downloads and re-download/CRAN mirror spikes due to package updates. 
