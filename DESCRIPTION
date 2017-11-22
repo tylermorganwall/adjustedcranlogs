@@ -1,10 +1,10 @@
 Package: adjustedcranlogs
 Type: Package
-Title: Adjusted CRAN download logs accounting for automated and repeated downloads
+Title: Remove Automated and Repeated Downloads from 'RStudio' 'CRAN' Download Logs
 Version: 0.1.0
 Authors@R: c(person("Tyler", "Morgan-Wall", email = "tylermw@gmail.com", role = c("aut", "cre")))
-Date: 2017-11-01
-Description: Adjusts output of cranlogs package to account for CRAN-wide daily automated downloads and re-downloads caused by package updates.
+Date: 2017-11-22
+Description: Adjusts output of 'cranlogs' package to account for 'CRAN'-wide daily automated downloads and re-downloads caused by package updates.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

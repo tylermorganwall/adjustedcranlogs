@@ -28,9 +28,9 @@
 #'@export
 #'@examples
 #'
-#'adj_cran_downloads("skpr",from="2017-08-15",to="2017-11-15")
+#'\dontrun{adj_cran_downloads("skpr",from="2017-08-15",to="2017-11-15")
 #'adj_cran_downloads("skpr",when="last-month")
-#'adj_cran_downloads(c("skpr","AlgDesign"),when="last-month")
+#'adj_cran_downloads(c("skpr","AlgDesign"),when="last-month")}
 
 adj_cran_downloads = function(packages, when, from, to, removeupdatespikes = TRUE, numbercomparison = 100, packagequantile=0.05) {
 
