@@ -27,13 +27,14 @@
 #'@import rvest dplyr cranlogs xml2
 #'@export
 #'@examples
+#'
 #'adj_cran_downloads("skpr",from="2017-08-15",to="2017-11-15")
 #'adj_cran_downloads("skpr",when="last-month")
 #'adj_cran_downloads(c("skpr","AlgDesign"),when="last-month")
 
 adj_cran_downloads = function(packages, when, from, to, removeupdatespikes = TRUE, numbercomparison = 100, packagequantile=0.05) {
 
-  packagedf = readRDS("data/packagepublished.rds")
+  packagedf = packagepublished
 
   if(length(packages) == 0) {
     stop("Must input at least one package.")
@@ -111,13 +112,13 @@ adj_cran_downloads = function(packages, when, from, to, removeupdatespikes = TRU
   if(removeupdatespikes) {
     comparepackagelogs %>%
       group_by(date) %>%
-      summarise(mindownloads = quantile(count,packagequantile,type=1)) %>%
+      summarise(mindownloads = stats::quantile(count,packagequantile,type=1)) %>%
       left_join(packagelogs,by=c("date")) %>%
       full_join(packageupdatedf,by=c("date","package")) %>%
       mutate(updateday = ifelse(is.na(updateday),FALSE,TRUE)) %>%
       mutate(adjusted_downloads = ifelse(count - mindownloads < 0,0,count - mindownloads)) %>%
       arrange(package) %>%
-      mutate(adjusted_downloads = ifelse(updateday | lag(updateday) & package == lag(package), median(adjusted_downloads), adjusted_downloads)) %>%
+      mutate(adjusted_downloads = ifelse(updateday | lag(updateday) & package == lag(package), stats::median(adjusted_downloads), adjusted_downloads)) %>%
       filter(!is.na(adjusted_downloads)) %>%
       group_by(package) %>%
       mutate(adjusted_total_downloads = cumsum(adjusted_downloads), total_downloads = cumsum(count)) %>%
@@ -125,7 +126,7 @@ adj_cran_downloads = function(packages, when, from, to, removeupdatespikes = TRU
   } else {
     comparepackagelogs %>%
       group_by(date) %>%
-      summarise(mindownloads = quantile(count,packagequantile,type=1)) %>%
+      summarise(mindownloads = stats::quantile(count,packagequantile,type=1)) %>%
       left_join(packagelogs,by=c("date")) %>%
       full_join(packageupdatedf,by=c("date","package")) %>%
       mutate(updateday = ifelse(is.na(updateday),FALSE,TRUE)) %>%
@@ -138,3 +139,5 @@ adj_cran_downloads = function(packages, when, from, to, removeupdatespikes = TRU
   }
   return(finaldf)
 }
+
+utils::globalVariables(c("published","mindownloads","updateday","adjusted_downloads"))

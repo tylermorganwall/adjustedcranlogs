@@ -42,4 +42,4 @@ mypkgdownloads %>%
   theme_minimal()
 ```
 
-![](data/README-example-1.png)
+![](inst/README-example-1.png)
