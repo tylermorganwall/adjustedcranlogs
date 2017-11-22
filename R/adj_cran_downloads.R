@@ -24,10 +24,10 @@
 #'   \item{\code{updateday}}{TRUE if the package was updated that day, FALSE otherwise.}
 #'   \item{\code{adjusted_downloads}}{Daily download count, adjusted.}
 #'   \item{\code{adjusted_total_downloads}}{Adjusted total number of downloads from beginning of measurement period.}
-#'@import rvest lubridate dplyr cranlogs xml2
+#'@import rvest dplyr cranlogs xml2
 #'@export
 #'@examples
-#'adj_cran_downloads("skpr",from="2017-08-15",to="2017-11-10")
+#'adj_cran_downloads("skpr",from="2017-08-15",to="2017-11-15")
 #'adj_cran_downloads("skpr",when="last-month")
 #'adj_cran_downloads(c("skpr","AlgDesign"),when="last-month")
 

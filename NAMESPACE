@@ -3,6 +3,5 @@
 export(adj_cran_downloads)
 import(cranlogs)
 import(dplyr)
-import(lubridate)
 import(rvest)
 import(xml2)
