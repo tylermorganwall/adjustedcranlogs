@@ -4,7 +4,7 @@ adjustedcranlogs
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version-ago/adjustedcranlogs)](http://cran.r-project.org/package=adjustedcranlogs)
 
-<img src="man/images/adjustedcranimage.png" align="center" /> <meta property="og:image" content=="man/images/adjustedcranimage.png" />
+<img src="man/images/adjustedcranimage.png" align="center" /> <meta property="og:image" content="man/images/adjustedcranimage.png" />
 
 Overview
 --------
