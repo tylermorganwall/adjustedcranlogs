@@ -12,7 +12,7 @@
 #'   \code{last-day}. It is ignored if \code{when} is given.
 #'@param remove_update_spikes Default `TRUE`. Removes the spike in downloads due to automatic re-downloads
 #'and CRAN mirrors associated with a package update. This replaces the number of downloads on an update day
-#'or the day following with the median download value across the measurement period. You can set this to `FALSE` if you do
+#'and the day following with the median download value across the measurement period. You can set this to `FALSE` if you do
 #'not see spikes in downloads on days before or after you update to accurately capture downloads during those days.
 #'@param number_to_compare Default `100`. The number of random packages to inspect to determine the minimum number of downloads in any single day.
 #'@param value_quantile Default `NULL`. By default, the function uses the minimum number of downloads. Setting a number here

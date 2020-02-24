@@ -4,8 +4,15 @@
 \alias{adj_cran_downloads}
 \title{Adjusted Cran Downloads}
 \usage{
-adj_cran_downloads(packages, when, from, to, removeupdatespikes = TRUE,
-  numbercomparison = 100, packagequantile = 0.05)
+adj_cran_downloads(
+  packages,
+  when,
+  from,
+  to,
+  remove_update_spikes = TRUE,
+  number_to_compare = 100,
+  value_quantile = NULL
+)
 }
 \arguments{
 \item{packages}{A character vector, the packages to query.}
@@ -19,12 +26,15 @@ If this is given, then \code{from} and \code{to} are ignored.}
 \item{to}{End date, in \code{yyyy-mm-dd} format, or
 \code{last-day}. It is ignored if \code{when} is given.}
 
-\item{removeupdatespikes}{Default TRUE. Removes the spike in downloads due to automatic re-downloads
-and CRAN mirrors associated with a package update. Replaces value with the median download value across the measurement period.}
+\item{remove_update_spikes}{Default `TRUE`. Removes the spike in downloads due to automatic re-downloads
+and CRAN mirrors associated with a package update. This replaces the number of downloads on an update day
+and the day following with the median download value across the measurement period. You can set this to `FALSE` if you do
+not see spikes in downloads on days before or after you update to accurately capture downloads during those days.}
 
-\item{numbercomparison}{Default 100. The number of random packages to inspect to determine the minimum number of downloads in any single day.}
+\item{number_to_compare}{Default `100`. The number of random packages to inspect to determine the minimum number of downloads in any single day.}
 
-\item{packagequantile}{Default 0.05. The quantile defining the "minimum" number of downloads on a single day.}
+\item{value_quantile}{Default `NULL`. By default, the function uses the minimum number of downloads. Setting a number here
+(between 0 and 1) instead returns the nth lowest number of downloads, where n = `value_quantile` * `number_to_compare`.}
 }
 \value{
 A data frame of downloads and total downloads by package.
@@ -40,7 +50,7 @@ A data frame of downloads and total downloads by package.
 }
 \description{
 Removes daily shared downloads amongst CRAN packages and re-download/CRAN mirror spikes associated with
-package updates.
+package updates. The function samples a number of packages from the CRAN and finds the minimum
 }
 \examples{
 
